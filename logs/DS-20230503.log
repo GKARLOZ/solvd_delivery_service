@@ -1,0 +1,25 @@
+[31m21:58:31.122 ERROR com.solvd.app.MyLogger.main() @19             - testing
+[m[31m22:02:45.380 ERROR com.solvd.app.MyLogger.main() @19             - testing
+[m[31m23:42:13.593 ERROR com.solvd.app.MyLogger.main() @19             - testing
+[m[31m23:43:53.608 ERROR com.solvd.app.MyLogger.main() @19             - testing
+[m[31m23:43:53.618 FATAL app.com.solvd.deliveryservice.Main.createTask5() @76             - This is an FATAL level log message!
+[m[31m23:43:53.618 ERROR app.com.solvd.deliveryservice.Main.createTask5() @77             - This is an ERROR level log message!
+[m[33;1m23:43:53.619 WARN  app.com.solvd.deliveryservice.Main.createTask5() @78             - This is an WARN level log message
+[m[32m23:43:53.619 INFO  app.com.solvd.deliveryservice.Main.createTask5() @79             - This is an INFO level log message
+[m[34m23:43:53.620 DEBUG app.com.solvd.deliveryservice.Main.createTask5() @80             - This is an DEBUG level log message
+[m[30m23:43:53.620 TRACE app.com.solvd.deliveryservice.Main.createTask5() @81             - This is an TRACE level log message
+[m[31m23:43:53.625 ERROR app.com.solvd.deliveryservice.Truck.refuel() @88             - InvalidFuelTypeException: Wrong Fuel Type
+[m[31m23:43:53.626 ERROR app.com.solvd.deliveryservice.Truck.setMileage() @71             - InvalidAmountException: Invalid amount.
+[m[31m23:43:53.630 ERROR app.com.solvd.deliveryservice.Person.setFirstName() @38             - InvalidNameException: Name can't exceed of 20 characters
+[m[31m23:44:09.471 ERROR com.solvd.app.MyLogger.main() @19             - testing
+[m[31m23:46:43.017 ERROR com.solvd.app.MyLogger.main() @19             - testing
+[m[31m23:46:43.020 FATAL app.com.solvd.deliveryservice.Main.createTask5() @76             - This is an FATAL level log message!
+[m[31m23:46:43.020 ERROR app.com.solvd.deliveryservice.Main.createTask5() @77             - This is an ERROR level log message!
+[m[33;1m23:46:43.020 WARN  app.com.solvd.deliveryservice.Main.createTask5() @78             - This is an WARN level log message
+[m[32m23:46:43.021 INFO  app.com.solvd.deliveryservice.Main.createTask5() @79             - This is an INFO level log message
+[m[34m23:46:43.021 DEBUG app.com.solvd.deliveryservice.Main.createTask5() @80             - This is an DEBUG level log message
+[m[30m23:46:43.021 TRACE app.com.solvd.deliveryservice.Main.createTask5() @81             - This is an TRACE level log message
+[m[31m23:46:43.022 ERROR app.com.solvd.deliveryservice.Truck.refuel() @88             - InvalidFuelTypeException: Wrong Fuel Type
+[m[31m23:46:43.022 ERROR app.com.solvd.deliveryservice.Truck.setMileage() @71             - InvalidAmountException: Invalid amount.
+[m[31m23:46:43.024 ERROR app.com.solvd.deliveryservice.Person.setFirstName() @38             - InvalidNameException: Name can't exceed of 20 characters
+[m

@@ -1,0 +1,3 @@
+08:50:00.387 INFO  app.com.solvd.deliveryservice.Main.createTask8() @37             - The dog ran to another dog. Another dog appeared and ran to the same dog.
+08:50:00.401 INFO  app.com.solvd.deliveryservice.Main.createTask8() @49             - This file has 15 words.
+08:50:00.405 INFO  app.com.solvd.deliveryservice.Main.createTask8() @50             - Unique words: 8 = {the=2, appeared=1, same=1, and=1, another=2, to=2, dog=4, ran=2}

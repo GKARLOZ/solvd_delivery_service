@@ -1,0 +1,31 @@
+16:11:41.622 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$1() @47             - 1:2
+16:11:41.633 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$1() @47             - 1:4
+16:11:41.633 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$1() @47             - 1:44
+16:11:41.634 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$1() @47             - 1:2
+16:11:41.635 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$2() @49             - 2: 1
+16:11:41.636 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$2() @49             - 2: 2
+16:11:41.636 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$2() @49             - 2: 2
+16:11:41.637 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$2() @49             - 2: 3
+16:11:41.637 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$2() @49             - 2: 4
+16:11:41.638 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$2() @49             - 2: 5
+16:11:41.638 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$2() @49             - 2: 44
+16:11:41.638 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$2() @49             - 2: 55
+16:11:41.640 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$3() @52             - 6
+16:11:41.641 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$3() @52             - 10
+16:11:41.641 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$3() @52             - 8
+16:11:41.642 INFO  app.com.solvd.deliveryservice.Main.createTask10() @54             - [2055308360, 296234888, 670819326]
+16:11:41.644 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$4() @63             - 1
+16:11:41.644 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$4() @63             - 2
+16:11:41.645 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$4() @63             - 3
+16:11:41.645 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$4() @63             - 4
+16:11:41.645 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$4() @63             - 5
+16:11:41.645 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$4() @63             - 6
+16:11:41.645 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$4() @63             - 7
+16:11:41.646 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$4() @63             - 8
+16:11:41.646 INFO  app.com.solvd.deliveryservice.Main.lambda$createTask10$4() @63             - 9
+16:11:41.647 INFO  app.com.solvd.deliveryservice.Main.createTask10() @65             - 4
+16:11:41.649 INFO  app.com.solvd.deliveryservice.Main.createTask10() @69             - All methods including from super classes: [getPackages, getId, setId, setPackages, wait, wait, wait, equals, toString, hashCode, getClass, notify, notifyAll]
+16:11:41.650 INFO  app.com.solvd.deliveryservice.Main.createTask10() @70             - Only declared methods inside myclass: [getPackages, getId, setId, setPackages]
+16:11:41.651 INFO  app.com.solvd.deliveryservice.Main.createTask10() @74             - Route: R12932
+16:11:41.657 INFO  app.com.solvd.deliveryservice.Main.createTask10() @77             - New Route: R32939
+16:11:41.659 INFO  app.com.solvd.deliveryservice.Main.createTask10() @82             - New Route: R334332
