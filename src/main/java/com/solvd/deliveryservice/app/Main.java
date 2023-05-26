@@ -7,6 +7,8 @@ import com.solvd.deliveryservice.exceptions.InvalidLicenseException;
 import com.solvd.deliveryservice.lambda.Convertable;
 import com.solvd.deliveryservice.lambda.Detectable;
 import com.solvd.deliveryservice.lambda.Generatable;
+import com.solvd.deliveryservice.threads.DBConnection;
+import com.solvd.deliveryservice.threads.DBConnectionPool;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,6 +17,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
 import java.util.*;
+import java.util.concurrent.*;
 import java.util.function.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,9 +30,9 @@ public class Main{
 
     private final static Logger LOGGER = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) throws InvalidLicenseException, IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
-
-        createTask10();
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        createTask11();
+        //createTask10();
         //createTask9();
         //createTask8();
         //createTask6();
@@ -38,6 +41,82 @@ public class Main{
         //createTask3();
 
     }
+    public static void createTask11() throws ExecutionException, InterruptedException {
+//  Create 2 Threads using Runnable and Thread.
+//  Create Connection Pool. Use collection from java.util.concurrent package. Connection class may be mocked. The pool should be threadsafe and lazy initialized.
+//  Initialize Connection Pool object of size 5. Load Connection Pool using single threads and Java Thread Pool (7 threads in total). 5 threads should be able to get the connection. 2 Threads should wait for the next available connection. The program should wait as well.
+//  Implement previous point but with interfaces Future and CompletableStage.
+
+        DBConnectionPool pool = new DBConnectionPool(5);
+
+        Runnable client1 = new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+                    DBConnection conn = pool.getConnection();
+                    LOGGER.info(Thread.currentThread().getName() + ": Get Connection successful.");
+                    Thread.sleep(3000);
+                    pool.releaseConnection(conn);
+                    LOGGER.info(Thread.currentThread().getName() + ": Release Connection successful.");
+
+                } catch (InterruptedException e) {
+                    LOGGER.error(e.getMessage());
+                }
+            }
+        };
+
+        Thread client2 = new Thread(() -> {
+            try {
+
+                DBConnection conn = pool.getConnection();
+                LOGGER.info(Thread.currentThread().getName() + ": Get Connection successful.");
+                Thread.sleep(1000);
+                pool.releaseConnection(conn);
+                LOGGER.info(Thread.currentThread().getName() + ": Release Connection successful.");
+
+            } catch (InterruptedException e) {
+                LOGGER.error(e.getMessage());
+            }
+        });
+
+//        ExecutorService executorServiceOne = Executors.newSingleThreadExecutor();
+//        executorServiceOne.execute(client2);
+//        executorServiceOne.execute(client1);
+//        executorServiceOne.execute(client2);
+//        executorServiceOne.execute(client1);
+//        executorServiceOne.execute(client2);
+//        executorServiceOne.execute(client1);
+//        executorServiceOne.execute(client2);
+//        executorServiceOne.shutdown();
+//        executorServiceOne.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+
+        // Connection Pool of 5 and Thread Pool of 7
+        ExecutorService executorService = Executors.newFixedThreadPool(7);
+        ;
+        executorService.execute(client1);
+        executorService.execute(client1);
+        executorService.execute(client1);
+        executorService.execute(client1);
+        executorService.execute(client1);
+        executorService.execute(client2);
+        executorService.execute(client2);
+        executorService.shutdown();
+        executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+
+        // Using the Future and CompletableStage interface
+        CompletableFuture<Void> client3 = CompletableFuture.runAsync(client1::run);
+        CompletableFuture<Void> client4 = CompletableFuture.runAsync(client2::run);
+        CompletableFuture<Void> client5 = CompletableFuture.runAsync(client1::run);
+        CompletableFuture<Void> client6 = CompletableFuture.runAsync(client2::run);
+        CompletableFuture<Void> client7 = CompletableFuture.runAsync(client1::run);
+        CompletableFuture<Void> client8 = CompletableFuture.runAsync(client2::run);
+        CompletableFuture<Void> client9 = CompletableFuture.runAsync(client1::run);
+
+        CompletableFuture<Void> completableFAll = CompletableFuture.allOf(client3, client4, client5, client6, client7, client8, client9);
+        completableFAll.get();
+    }
+
     public static void createTask10() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
 //        Add 7 collection streaming in the hierarchy with terminal and non-terminal operations.
 //        Using reflection extract information(modifiers, return types, parameters, etc)
@@ -83,6 +162,7 @@ public class Main{
         LOGGER.info("New Route: "+newRoute.getId());
 
     }
+
     public static void createTask9(){
 //        Use at least 5 lambda functions from the java.util.function package.
 //        Create 3 custom Lambda functions with generics.
@@ -136,8 +216,6 @@ public class Main{
 
     }
 
-
-
     public static void createTask8() throws IOException {
 //        Read text from the file and calculate the numbers of the unique words.
 //        Write the result to the file. The main requirement is: using StringUtils
@@ -161,8 +239,6 @@ public class Main{
         LOGGER.info("Unique words: " + uniqueWords.size()+" = "+ uniqueWords);
 
     }
-
-
 
     public static void createTask6(){
 //      (replace all array with collections, at least 5 collections), add 3 generics and implement my own linkedList.

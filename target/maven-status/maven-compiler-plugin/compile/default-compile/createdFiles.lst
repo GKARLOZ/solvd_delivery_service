@@ -10,6 +10,7 @@ com\solvd\deliveryservice\exceptions\InvalidAmountException.class
 com\solvd\deliveryservice\app\Employee.class
 com\solvd\deliveryservice\exceptions\InvalidIDException.class
 com\solvd\deliveryservice\app\Vehicle.class
+com\solvd\deliveryservice\threads\DBConnectionPool.class
 com\solvd\deliveryservice\app\Van.class
 com\solvd\deliveryservice\app\Driver.class
 com\solvd\deliveryservice\lambda\Generatable.class
@@ -19,6 +20,7 @@ com\solvd\deliveryservice\exceptions\InvalidNameException.class
 com\solvd\deliveryservice\app\Address.class
 com\solvd\deliveryservice\lambda\Convertable.class
 com\solvd\deliveryservice\app\Person.class
+com\solvd\deliveryservice\threads\DBConnection.class
 com\solvd\deliveryservice\interfaces\Workable.class
 com\solvd\deliveryservice\app\Hub.class
 com\solvd\deliveryservice\collections\LinkedList.class
@@ -31,3 +33,4 @@ com\solvd\deliveryservice\app\CSRepresentative.class
 com\solvd\deliveryservice\app\PackageDoP.class
 com\solvd\deliveryservice\app\Main.class
 com\solvd\deliveryservice\app\Route.class
+com\solvd\deliveryservice\app\Main$1.class
