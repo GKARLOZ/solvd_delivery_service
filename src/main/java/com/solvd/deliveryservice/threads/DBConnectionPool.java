@@ -3,24 +3,32 @@ package com.solvd.deliveryservice.threads;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.Connection;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 public class DBConnectionPool {
-        private int poolSize;
+        private final int POOL_SIZE = 5;
         private BlockingQueue<DBConnection> connections;
+        private static DBConnectionPool instance;
         private final static Logger LOGGER = LogManager.getLogger(DBConnectionPool.class);
 
-        public DBConnectionPool(int poolSize) {
-            this.poolSize = poolSize;
+        private DBConnectionPool() { }
+
+        public static DBConnectionPool getInstance(){
+            if (instance == null) {
+                synchronized (DBConnectionPool.class) {
+                    if (instance == null) {
+                        instance = new DBConnectionPool();
+                    }
+                }
+            }
+            return instance;
         }
 
-        public DBConnectionPool() {
-            poolSize = 2;
-        }
 
         private void initializePool() {
-            for (int i = 0; i < poolSize; i++) {
+            for (int i = 0; i < POOL_SIZE; i++) {
                 DBConnection connection = new DBConnection();
                 connection.connect();
                 connections.offer(connection);
@@ -30,9 +38,8 @@ public class DBConnectionPool {
         public synchronized DBConnection getConnection(){
 
             try{
-                //lazy initialize
                 if(connections == null) {
-                    connections = new ArrayBlockingQueue<>(poolSize);
+                    connections = new ArrayBlockingQueue<>(POOL_SIZE);
                     initializePool();
                     LOGGER.info(connections.size() + " available connections in the pool");
                 }

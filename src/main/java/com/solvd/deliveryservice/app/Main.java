@@ -31,6 +31,7 @@ public class Main{
     private final static Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
+
         createTask11();
         //createTask10();
         //createTask9();
@@ -41,23 +42,22 @@ public class Main{
         //createTask3();
 
     }
+
     public static void createTask11() throws ExecutionException, InterruptedException {
 //  Create 2 Threads using Runnable and Thread.
 //  Create Connection Pool. Use collection from java.util.concurrent package. Connection class may be mocked. The pool should be threadsafe and lazy initialized.
 //  Initialize Connection Pool object of size 5. Load Connection Pool using single threads and Java Thread Pool (7 threads in total). 5 threads should be able to get the connection. 2 Threads should wait for the next available connection. The program should wait as well.
 //  Implement previous point but with interfaces Future and CompletableStage.
 
-        DBConnectionPool pool = new DBConnectionPool(5);
-
         Runnable client1 = new Runnable() {
             @Override
             public void run() {
                 try {
 
-                    DBConnection conn = pool.getConnection();
+                    DBConnection conn = DBConnectionPool.getInstance().getConnection();
                     LOGGER.info(Thread.currentThread().getName() + ": Get Connection successful.");
                     Thread.sleep(3000);
-                    pool.releaseConnection(conn);
+                    DBConnectionPool.getInstance().releaseConnection(conn);
                     LOGGER.info(Thread.currentThread().getName() + ": Release Connection successful.");
 
                 } catch (InterruptedException e) {
@@ -69,10 +69,10 @@ public class Main{
         Thread client2 = new Thread(() -> {
             try {
 
-                DBConnection conn = pool.getConnection();
+                DBConnection conn = DBConnectionPool.getInstance().getConnection();
                 LOGGER.info(Thread.currentThread().getName() + ": Get Connection successful.");
                 Thread.sleep(1000);
-                pool.releaseConnection(conn);
+                DBConnectionPool.getInstance().releaseConnection(conn);
                 LOGGER.info(Thread.currentThread().getName() + ": Release Connection successful.");
 
             } catch (InterruptedException e) {
